@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: payment-microservice
+  datasource:
+    url: jdbc:postgresql://localhost:5432/paymentdb
+    username: paymentuser
+    password: paymentpass
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com.yourcompany.payment: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
