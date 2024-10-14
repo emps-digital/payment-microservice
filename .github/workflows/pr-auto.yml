@@ -16,7 +16,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # Token automático fornecido pelo GitHub Actions
+          token: ${{ secrets.PAT_TOKEN }}  # Token automático fornecido pelo GitHub Actions
           branch: develop  # Branch de destino (onde o PR será feito)
           title: 'Auto PR: ${GITHUB_REF##*/}'  # Título do PR com o nome da branch feature
           body: 'Este pull request foi criado automaticamente para a branch de feature: `${GITHUB_REF##*/}`'
