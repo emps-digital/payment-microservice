@@ -1,0 +1,24 @@
+name: Auto Create PR
+
+on:
+  push:
+    branches:
+      - 'feature/*'  # Detectar push nas branches feature/*
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  # Token automático fornecido pelo GitHub Actions
+          branch: develop  # Branch de destino (onde o PR será feito)
+          title: 'Auto PR: ${GITHUB_REF##*/}'  # Título do PR com o nome da branch feature
+          body: 'Este pull request foi criado automaticamente para a branch de feature: `${GITHUB_REF##*/}`'
+          draft: false  # Se quiser que o PR seja rascunho, defina como 'true'
+          head: ${{ github.ref }}  # Branch de origem (a branch feature)
