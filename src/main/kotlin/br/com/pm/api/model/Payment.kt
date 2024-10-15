@@ -21,7 +21,7 @@ data class Payment (
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    val status: PaymentStatus = PaymentStatus.PENDING,
+    var status: PaymentStatus = PaymentStatus.PENDING,
 
     @Column(nullable = false)
     val paymentMethod: PaymentMethod,
@@ -30,7 +30,7 @@ data class Payment (
     val createdAt: LocalDateTime = LocalDateTime.now(),
 
     @Column(nullable = true)
-    val updatedAt: LocalDateTime? = null
+    var updatedAt: LocalDateTime? = null
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
